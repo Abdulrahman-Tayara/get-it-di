@@ -1,7 +1,7 @@
 {
   "author": "Abdulrahman-Tayara",
   "name": "get-it-di",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Typescript Dependency Injection Library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
