@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/get-it-di.svg)](https://www.npmjs.com/package/get-it-di)
+
 # get-it-di
 
 Typescript Dependency Injection Library
