@@ -1,0 +1,25 @@
+{
+  "author": "Abdulrahman-Tayara",
+  "name": "get-it-di",
+  "version": "1.0.1",
+  "description": "Typescript Dependency Injection Library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "keywords": [
+    "dependency-injection",
+    "di",
+    "react",
+    "nodejs",
+    "ts",
+    "typescript",
+    "container"
+  ],
+  "homepage": "https://github.com/Abdulrahman-Tayara/easy-di#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Abdulrahman-Tayara/easy-di"
+  }
+}
