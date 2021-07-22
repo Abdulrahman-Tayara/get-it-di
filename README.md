@@ -1,5 +1,3 @@
-[![npm](https://img.shields.io/npm/v/get-it-di.svg)](https://www.npmjs.com/package/get-it-di)
-
 # get-it-di
 
 Typescript Dependency Injection Library
@@ -7,11 +5,13 @@ Typescript Dependency Injection Library
 ## Installation
 
 Install by npm:
+
 ```
 npm install get-it-di
 ```
 
 Install by yarn:
+
 ```
 yarn add get-it-di
 ```
@@ -39,17 +39,19 @@ container.register<Car>(Car, () => new Car("Car1"))
 // or you can register by Key
 container.register<Car>("CAR_KEY", () => new Car("Car2"))
 
-const resolvedCar =  container.resolve(Car)
+const resolvedCar = container.resolve(Car)
 console.log(resolvedCar.name)
 // output: Car1
 
-const resolvedCarByKey =  container.resolve<Car>("CAR_KEY")
+const resolvedCarByKey = container.resolve<Car>("CAR_KEY")
 console.log(resolvedCarByKey.name)
 // output: Car2
 ```
+
 By using this method, you'll get a **new instance** of the class in each resolving call
 
 ### registerSingleton:
+
 ```ts
 class Car {
     constructor(public name: string) {
@@ -58,14 +60,16 @@ class Car {
 
 container.registerSingleton<Car>(Car, new Car("1"))
 
-const resolvedCar =  container.resolve(Car)
+const resolvedCar = container.resolve(Car)
 console.log(resolvedCar.name)
 // output: Car1
 ```
+
 By using this method, you'll get **the same instance** of the class in each resolving call.
 **This method requires a direct object/value.**
 
-### registerLazySingleton:
+### registerSingleton:
+
 ```ts
 class Car {
     constructor(public name: string) {
@@ -74,32 +78,44 @@ class Car {
 
 container.registerLazySingleton<Car>(Car, () => new Car("1"))
 
-const resolvedCar =  container.resolve(Car)
+const resolvedCar = container.resolve(Car)
 console.log(resolvedCar.name)
 // output: Car1
 ```
-By using this method, you'll get **the same instance** of the class in each resolving call.
 
+By using this method, you'll get **the same instance** of the class in each resolving call.
 
 ## Interfaces:
 ```ts
-interface Animal {
-    walk(): void;
+class ApiClient {
+    
 }
 
-class Dog implements Animal {
-    walk(): void {
-        // Implementation
+interface IUserRepository {
+    get(id: string): User;
+}
+
+class UserRepository implements IUserRepository {
+
+    constructor(private api: ApiClient) {
+    }
+
+    get(id: string): User {
     }
 }
 
+
 // Register
-container.register<Animal>("UNIQUE_KEY", () => new Dog())
-// or
-container.registerSingleton<Animal>("UNIQUE_KEY", new Dog())
-// or
-container.registerLazySingleton<Animal>("UNIQUE_KEY", () => new Dog())
+container.registerLazySingleton<ApiClient>(ApiClient, () => new ApiClient())
+
+container.registerLazySingleton<IUserRepository>(
+    "USER_REPOSITORY",
+    (c) => {
+        return new UserRepository(c.resolve<ApiClient>(ApiClient))
+    }
+)
+
 
 // Resolve
-const animal = container.resolve<Animal>("UNIQUE_KEY")
+const userRepository = container.resolve<IUserRepository>("USER_REPOSITORY")
 ```
