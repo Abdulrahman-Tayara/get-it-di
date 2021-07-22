@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/get-it-di.svg)](https://www.npmjs.com/package/get-it-di)
+
 # get-it-di
 
 Typescript Dependency Injection Library
@@ -60,10 +62,10 @@ const resolvedCar =  container.resolve(Car)
 console.log(resolvedCar.name)
 // output: Car1
 ```
-By using this method, you'll get **the samce instance** of the class in each resolving call.
+By using this method, you'll get **the same instance** of the class in each resolving call.
 **This method requires a direct object/value.**
 
-### registerSingleton:
+### registerLazySingleton:
 ```ts
 class Car {
     constructor(public name: string) {
@@ -76,7 +78,7 @@ const resolvedCar =  container.resolve(Car)
 console.log(resolvedCar.name)
 // output: Car1
 ```
-By using this method, you'll get **the samce instance** of the class in each resolving call.
+By using this method, you'll get **the same instance** of the class in each resolving call.
 
 
 ## Interfaces:
