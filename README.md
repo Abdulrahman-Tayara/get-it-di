@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/get-it-di.svg)](https://www.npmjs.com/package/get-it-di)
+
 # get-it-di
 
 Typescript Dependency Injection Library
@@ -68,7 +70,7 @@ console.log(resolvedCar.name)
 By using this method, you'll get **the same instance** of the class in each resolving call.
 **This method requires a direct object/value.**
 
-### registerSingleton:
+### registerLazySingleton:
 
 ```ts
 class Car {
